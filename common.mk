@@ -22,11 +22,8 @@ ifeq ($(ARCH_ARM_HAVE_NEON),true)
     common_flags += -D__ARM_HAVE_NEON
 endif
 
-ifeq ($(call is-board-platform-in-list, $(MSM_VIDC_TARGET_LIST)), true)
+ifeq ($(call is-board-platform-in-list, msm8996), true)
     common_flags += -DVENUS_COLOR_FORMAT
-endif
-
-ifeq ($(call is-board-platform-in-list, $(MASTER_SIDE_CP_TARGET_LIST)), true)
     common_flags += -DMASTER_SIDE_CP
 endif
 
@@ -36,7 +33,7 @@ kernel_includes :=
 # Executed only on QCOM BSPs
 ifeq ($(TARGET_USES_QCOM_BSP),true)
 # Enable QCOM Display features
-    common_flags += -DQCOM_BSP
+    common_flags += -DQTI_BSP
 endif
 ifneq ($(call is-platform-sdk-version-at-least,18),true)
     common_flags += -DANDROID_JELLYBEAN_MR1=1
